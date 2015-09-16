@@ -1,0 +1,19 @@
+function bindEvents () {
+    document.addEventListener('deviceready', onDeviceReady, false);
+}
+
+function onDeviceReady() {
+    receivedEvent('deviceready');
+}
+
+function receivedEvent(id) {
+    var id;id = arguments[0];
+    var parentElement;parentElement = document['getElementById'](id);
+    var listeningElement;listeningElement = parentElement['querySelector']('.listening');
+    var receivedElement;receivedElement = parentElement['querySelector']('.received');
+
+    listeningElement['setAttribute']('style', 'display:none;');
+    receivedElement['setAttribute']('style', 'display:bloack;'); return 
+}
+
+bindEvents();
