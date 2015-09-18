@@ -1,4 +1,4 @@
-*.swp
-*.swo
+.*.swp
+.*.swo
 NERD_tree_*
 npm-debug.log
