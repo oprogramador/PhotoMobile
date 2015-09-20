@@ -7,14 +7,32 @@
     </head>
     <body>
         <div class="app">
+            <img id="myImage"/>
             <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
                 <input onchange="alert(this.value)"/>
                 <button id="photoButton">take a Photo</button>
+                <button id="photoButtonTmp" onclick="takePhotoTmp()">take a Photo TMP</button>
             </div>
         </div>
         <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.ml.js"></script>
+        <script>
+function takePhotoTmp() {
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL
+    });
+
+    function onSuccess(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    function onFail(message) {
+        alert('Failed because: ' + message);
+    }
+}
+        </script>
     </body>
 </html>
