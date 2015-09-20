@@ -1,2 +1,4 @@
-(function() {var bindEvents;bindEvents = (function () {return  }); return   bindEvents()
-}).exports(typeof module !== 'undefined' ? module : null)()
+(function() {var bindEvents;bindEvents = (function () {return      eval('$')('#photoButton').click((function () {return          alert('photoABC')
+    }))
+}); return   bindEvents()
+})()
