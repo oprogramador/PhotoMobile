@@ -13,4 +13,4 @@ var receivedEvent;receivedEvent = (function () {
     listeningElement['setAttribute']('style', 'display:none;');
     receivedElement['setAttribute']('style', 'display:block;'); return       console['log']('Received Event: '.__add(id))
 }); return   bindEvents()
-}).exports(typeof module !== 'undefined' ? module : null)
+}).exports(typeof module !== 'undefined' ? module : null)()
