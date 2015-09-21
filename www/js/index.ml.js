@@ -1,7 +1,10 @@
 (function() {var takePhoto;takePhoto = (function () {
     var onSuccess;onSuccess = (function () {
-        var imageData;imageData = arguments[0];
-        var image;image = document.getElementById('myImage'); return          image.src() = "data:image/jpeg;base64," .__add( imageData
+        alert('success');
+        alert('a document');
+        var image;image = document.getElementById('myImage');
+        alert('image='.__add(image));
+        var imageData;imageData = arguments[0]; return          image['src'] = "data:image/jpeg;base64," .__add( imageData
     )});
 
     var onFail;onFail = (function () {
