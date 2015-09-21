@@ -7,37 +7,15 @@
     </head>
     <body>
         <div class="app">
-            <img id="myImage"/>
-            <h1>Apache Cordova</h1>
+            <img id="myImage" style="max-width:200; max-height:200;"/>
+            <h1>Apache Cordova new1</h1>
             <div id="deviceready" class="blink">
                 <input onchange="alert(this.value)"/>
                 <button id="photoButton">take a Photo</button>
-                <button id="photoButtonTmp">take a Photo TMP</button>
             </div>
         </div>
         <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.ml.js"></script>
-        <script>
-    var onSuccessTmp;onSuccessTmp = (function () {
-        var image;image = document.getElementById('myImage');
-        var imageData;imageData = arguments[0]; return          image['src'] = "data:image/jpeg;base64," .__add( imageData
-    )});
-
-    var onFailTmp;onFailTmp = (function () {
-        var message;message = arguments[0]; return          alert('Failed because: ' .__add( message))
-    });
-
-    function takePhotoTmp() {
-        navigator['camera'].getPicture(onSuccessTmp, onFailTmp, new AssocArray([
-            'quality', (50),
-            'destinationType', Camera['DestinationType']['DATA_URL']
-        ]));
-    }
-
-    eval('$')('#photoButtonTmp').click(function() {
-        takePhotoTmp()
-    });
-        </script>
     </body>
 </html>

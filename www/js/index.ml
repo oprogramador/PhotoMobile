@@ -1,9 +1,6 @@
 $takePhoto = {
     $onSuccess = {
-        alert('success');
-        alert('a document');
         $image = document.getElementById('myImage');
-        alert('image='+image);
         $imageData = this;
         image['src'] = "data:image/jpeg;base64," + imageData
     };
