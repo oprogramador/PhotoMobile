@@ -56,10 +56,21 @@ var deletePhoto;deletePhoto = (function () {
     eval('$')('#showPhoto').hide(); return      deletePhotoFromStorage(key)
 });
 
+var makeRandomChange;makeRandomChange = (function () {return   });
+
+var changePhoto;changePhoto = (function () {
+    var key;key = eval('$')('#showPhoto img').attr('name');
+    console.log('key='.__add(key));
+    var elem;elem = eval('$')('#'.__add(getPhotoId(key))).get((0));
+    elem['parentElement'].removeChild(elem);
+    eval('$')('#showPhoto').hide(); return      deletePhotoFromStorage(key)
+});
+
 var bindEvents;bindEvents = (function () {
     eval('$')('#photoButton').click((function () {return          takePhoto()
     }));
-    eval('$')('#showPhoto [name=close]').click(closePhoto); return      eval('$')('#showPhoto [name=delete]').click(deletePhoto)
+    eval('$')('#showPhoto [name=close]').click(closePhoto);
+    eval('$')('#showPhoto [name=delete]').click(deletePhoto); return      eval('$')('#showPhoto [name=change]').click(changePhoto)
 });
 
 var init;init = (function () {
