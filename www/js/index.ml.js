@@ -17,11 +17,16 @@ var savePhoto;savePhoto = (function () {
     photos[arguments[0]] = arguments[1]; return      localStorage['photos'] = photos.jsonStr()
 });
 
+var deletePhotoFromStorage;deletePhotoFromStorage = (function () {
+    var photos;photos = localStorage['photos'].fromJson();
+    photos.remove(arguments[0]); return      localStorage['photos'] = photos.jsonStr()
+});
+
 var getPhotoId;getPhotoId = (function () {return      'img-'.__add(arguments[0]
 )});
 
 var showPhoto;showPhoto = (function () {
-    eval('$')('#showPhoto').show(); return      eval('$')('#showPhoto [name=photo]').html('<img src="'.__add(eval('$')('#'.__add(getPhotoId(arguments[0]))).attr('src')).__add('">'))
+    eval('$')('#showPhoto').show(); return      eval('$')('#showPhoto [name=photo]').html('<img name="'.__add(arguments[0]).__add('" src="').__add(eval('$')('#'.__add(getPhotoId(arguments[0]))).attr('src')).__add('">'))
 });
 
 var appendPhotoToDraw;appendPhotoToDraw = (function () {
@@ -40,8 +45,21 @@ var drawPhotos;drawPhotos = (function () {
     }))
 });
 
-var bindEvents;bindEvents = (function () {return      eval('$')('#photoButton').click((function () {return          takePhoto()
-    }))
+var closePhoto;closePhoto = (function () {return      eval('$')('#showPhoto').hide()
+});
+
+var deletePhoto;deletePhoto = (function () {
+    var key;key = eval('$')('#showPhoto img').attr('name');
+    console.log('key='.__add(key));
+    var elem;elem = eval('$')('#'.__add(getPhotoId(key))).get((0));
+    elem['parentElement'].removeChild(elem);
+    eval('$')('#showPhoto').hide(); return      deletePhotoFromStorage(key)
+});
+
+var bindEvents;bindEvents = (function () {
+    eval('$')('#photoButton').click((function () {return          takePhoto()
+    }));
+    eval('$')('#showPhoto [name=close]').click(closePhoto); return      eval('$')('#showPhoto [name=delete]').click(deletePhoto)
 });
 
 var init;init = (function () {
