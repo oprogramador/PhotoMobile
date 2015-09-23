@@ -4,16 +4,30 @@
         <script type="text/javascript" src="js/all.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/my.css">
-        <title>Hello World</title>
+        <title>PhotoMobile</title>
     </head>
     <body>
-        <div class="app">
+        <div style="z-index:0" class="app">
             <div id="photos"></div>
             <h1>Apache Cordova new1</h1>
             <div id="deviceready" class="blink">
                 <input onchange="alert(this.value)"/>
                 <button id="photoButton">take a Photo</button>
             </div>
+        </div>
+        <div id="showPhoto" style="position:absolute; z-index:200; width:100px; height:100px; display:none">
+            <table>
+                <tr height="10%">
+                    <td>
+                        <button name="close">CLOSE</button>
+                    </td>
+                </tr>
+                <tr height="90%">
+                    <td>
+                        <div name="photo"></div>
+                    </td>
+                </tr> 
+            </table>
         </div>
         <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>

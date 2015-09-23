@@ -27,7 +27,8 @@ $getPhotoId = {
 };
 
 $showPhoto = {
-    alert(this)
+    eval('$')('#showPhoto').show();
+    eval('$')('#showPhoto [name=photo]').html('<img src="'+eval('$')('#'+getPhotoId(this)).attr('src')+'">')
 };
 
 $appendPhotoToDraw = {

@@ -1,7 +1,8 @@
 $takePhoto = {
     $onSuccess = {
-        appendPhotoToDraw(this);
-        savePhoto(this)
+        $key = 20.randStr;
+        appendPhotoToDraw(key, this);
+        savePhoto(key, this)
     };
 
     $onFail = {
@@ -17,12 +18,25 @@ $takePhoto = {
 
 $savePhoto = {
     $photos = localStorage['photos'].fromJson;
-    photos[20.randStr] = this;
+    photos[this] = first;
     localStorage['photos'] = photos.jsonStr
 };
 
+$getPhotoId = {
+    'img-'+this
+};
+
+$showPhoto = {
+    eval('$')('#showPhoto').show();
+    eval('$')('#showPhoto [name=photo]').html('<img src="'+eval('$')('#'+getPhotoId(this)).attr('src')+'">')
+};
+
 $appendPhotoToDraw = {
-    eval('$')('#photos').append('<img src="data:image/jpeg;base64,'+this+'"/>')
+    eval('$')('#photos').append('<img name="'+this+'"id="'+getPhotoId(this)+'" src="data:image/jpeg;base64,'+first+'"/>');
+    $that = this;
+    eval('$')('#'+getPhotoId(this)).click({
+        showPhoto(that)
+    })
 };
 
 $getAllPhotos = {
@@ -35,7 +49,7 @@ $getAllPhotos = {
 $drawPhotos = {
     $photos = getAllPhotos();
     photos.keys.each({
-        appendPhotoToDraw(photos[this])
+        appendPhotoToDraw(this, photos[this])
     })
 };
 

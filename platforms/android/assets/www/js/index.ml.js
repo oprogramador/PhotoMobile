@@ -1,6 +1,7 @@
 (function() {var takePhoto;takePhoto = (function () {
     var onSuccess;onSuccess = (function () {
-        appendPhotoToDraw(arguments[0]); return          savePhoto(arguments[0])
+        var key;key = (20).randStr();
+        appendPhotoToDraw(key, arguments[0]); return          savePhoto(key, arguments[0])
     });
 
     var onFail;onFail = (function () {
@@ -13,10 +14,20 @@
 
 var savePhoto;savePhoto = (function () {
     var photos;photos = localStorage['photos'].fromJson();
-    photos[(20).randStr()] = arguments[0]; return      localStorage['photos'] = photos.jsonStr()
+    photos[arguments[0]] = arguments[1]; return      localStorage['photos'] = photos.jsonStr()
 });
 
-var appendPhotoToDraw;appendPhotoToDraw = (function () {return      eval('$')('#photos').append('<img src="data:image/jpeg;base64,'.__add(arguments[0]).__add('"/>'))
+var getPhotoId;getPhotoId = (function () {return      'img-'.__add(arguments[0]
+)});
+
+var showPhoto;showPhoto = (function () {
+    eval('$')('#showPhoto').show(); return      eval('$')('#showPhoto [name=photo]').html('<img src="'.__add(eval('$')('#'.__add(getPhotoId(arguments[0]))).attr('src')).__add('">'))
+});
+
+var appendPhotoToDraw;appendPhotoToDraw = (function () {
+    eval('$')('#photos').append('<img name="'.__add(arguments[0]).__add('"id="').__add(getPhotoId(arguments[0])).__add('" src="data:image/jpeg;base64,').__add(arguments[1]).__add('"/>'));
+    var that;that = arguments[0]; return      eval('$')('#'.__add(getPhotoId(arguments[0]))).click((function () {return          showPhoto(that)
+    }))
 });
 
 var getAllPhotos;getAllPhotos = (function () {
@@ -25,7 +36,7 @@ var getAllPhotos;getAllPhotos = (function () {
 });
 
 var drawPhotos;drawPhotos = (function () {
-    var photos;photos = getAllPhotos(); return      photos.keys().each((function () {return          appendPhotoToDraw(photos[arguments[0]])
+    var photos;photos = getAllPhotos(); return      photos.keys().each((function () {return          appendPhotoToDraw(arguments[0], photos[arguments[0]])
     }))
 });
 

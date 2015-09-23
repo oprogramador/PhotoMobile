@@ -1,4 +1,13 @@
-img {
+#photos img {
     max-width: 200px;
     max-height: 200px;
+}
+
+img:hover {
+    border: 5px red double;
+}
+
+#showPhoto img {
+    width: 1000%;
+    height: 1000%;
 }

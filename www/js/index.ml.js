@@ -20,7 +20,8 @@ var savePhoto;savePhoto = (function () {
 var getPhotoId;getPhotoId = (function () {return      'img-'.__add(arguments[0]
 )});
 
-var showPhoto;showPhoto = (function () {return      alert(arguments[0])
+var showPhoto;showPhoto = (function () {
+    eval('$')('#showPhoto').show(); return      eval('$')('#showPhoto [name=photo]').html('<img src="'.__add(eval('$')('#'.__add(getPhotoId(arguments[0]))).attr('src')).__add('">'))
 });
 
 var appendPhotoToDraw;appendPhotoToDraw = (function () {
