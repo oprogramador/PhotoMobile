@@ -2,3 +2,6 @@
 .*.swo
 NERD_tree_*
 npm-debug.log
+node_modules
+platfoms
+plugins
